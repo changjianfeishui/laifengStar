@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreMotion
 class ViewController: UIViewController {
 
     
@@ -17,9 +17,47 @@ class ViewController: UIViewController {
     var gravity: UIGravityBehavior!
     var collision: UICollisionBehavior!
     
+    let motionQueue = NSOperationQueue()
+    let motionManager = CMMotionManager()
+    
+    override func viewDidDisappear(animated: Bool)  {
+        super.viewDidDisappear(animated)
+        NSLog("Stopping gravity")
+        motionManager.stopDeviceMotionUpdates()
+    }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.motionManager.gyroUpdateInterval = 0.1
+        self.motionManager.startDeviceMotionUpdatesToQueue(self.motionQueue) { (motion: CMDeviceMotion?, error: NSError?) -> Void in
+            let grav : CMAcceleration = motion!.gravity;
+            
+            let x = CGFloat(grav.x);
+            let y = CGFloat(grav.y);
+            var p = CGPointMake(x,y)
+            
+            if (error != nil) {
+                NSLog("\(error)")
+            }
+            
+            // Have to correct for orientation.
+            let orientation = UIApplication.sharedApplication().statusBarOrientation;
+            
+            if(orientation == UIInterfaceOrientation.LandscapeLeft) {
+                let t = p.x
+                p.x = 0 - p.y
+                p.y = t
+            } else if (orientation == UIInterfaceOrientation.LandscapeRight) {
+                let t = p.x
+                p.x = p.y
+                p.y = 0 - t
+            } else if (orientation == UIInterfaceOrientation.PortraitUpsideDown) {
+                p.x *= -1
+                p.y *= -1
+            }
+            
+            let v = CGVectorMake(p.x, 0 - p.y);
+            self.gravity.gravityDirection = v;
+        }
         
         self.animator = UIDynamicAnimator(referenceView: self.playerView)
         self.gravity = UIGravityBehavior()
@@ -62,6 +100,7 @@ class ViewController: UIViewController {
         }
     }
     
+
 
 }
 
