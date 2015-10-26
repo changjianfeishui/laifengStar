@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="laifengStar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l0N-kn-KLh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="190" id="SGC-B7-Lmg"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Un-yf-INn">
+                                <rect key="frame" x="170" y="373" width="34" height="30"/>
+                                <state key="normal" title="clear"/>
+                                <connections>
+                                    <action selector="clear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TWE-OQ-Zh4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiA-TZ-j00">
+                                <rect key="frame" x="157.5" y="303.5" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="IEp-1S-bFp"/>
+                                    <constraint firstAttribute="width" constant="60" id="jJD-Xo-m3N"/>
+                                </constraints>
+                                <state key="normal" image="phyx_star.png">
+                                    <color key="titleColor" red="0.98039215690000003" green="0.26274509800000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="fire:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Kfu-fu-eYr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0Un-yf-INn" firstAttribute="top" secondItem="wiA-TZ-j00" secondAttribute="bottom" constant="24" id="4wv-EA-iKH"/>
+                            <constraint firstItem="wiA-TZ-j00" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5QZ-ti-k5p"/>
+                            <constraint firstItem="l0N-kn-KLh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7Ja-zh-cUr"/>
+                            <constraint firstItem="wiA-TZ-j00" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="8cL-bF-fCh"/>
+                            <constraint firstAttribute="trailing" secondItem="l0N-kn-KLh" secondAttribute="trailing" id="R0b-Tn-IIE"/>
+                            <constraint firstItem="l0N-kn-KLh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="SKY-BG-5PI"/>
+                            <constraint firstItem="0Un-yf-INn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nCV-fV-icj"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="playerView" destination="l0N-kn-KLh" id="s0H-c4-iwD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="345.5" y="322.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="phyx_star.png" width="25" height="25"/>
+    </resources>
+</document>
