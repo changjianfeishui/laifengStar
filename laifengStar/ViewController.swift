@@ -33,29 +33,14 @@ class ViewController: UIViewController {
             
             let x = CGFloat(grav.x);
             let y = CGFloat(grav.y);
-            var p = CGPointMake(x,y)
             
             if (error != nil) {
                 NSLog("\(error)")
             }
             
-            // Have to correct for orientation.
-            let orientation = UIApplication.sharedApplication().statusBarOrientation;
+
             
-            if(orientation == UIInterfaceOrientation.LandscapeLeft) {
-                let t = p.x
-                p.x = 0 - p.y
-                p.y = t
-            } else if (orientation == UIInterfaceOrientation.LandscapeRight) {
-                let t = p.x
-                p.x = p.y
-                p.y = 0 - t
-            } else if (orientation == UIInterfaceOrientation.PortraitUpsideDown) {
-                p.x *= -1
-                p.y *= -1
-            }
-            
-            let v = CGVectorMake(p.x, 0 - p.y);
+            let v = CGVectorMake(x, 0 - y);
             self.gravity.gravityDirection = v;
         }
         
